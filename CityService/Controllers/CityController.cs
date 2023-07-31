@@ -1,5 +1,7 @@
 ﻿using CityService.Dto;
+using CityService.Domain;
 using Microsoft.AspNetCore.Mvc;
+using CityService;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -31,9 +33,9 @@ public class CityController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<CityDTO> AddCity([FromBody] City city)
+    public ActionResult<CityDTO> AddCity([FromBody] RequestAddCity city)
     {
-        var addedCity = _cityService.AddCity(city);
+        var addedCity = _cityService.AddCity1(city.City,city.Region);
         return CreatedAtAction(nameof(GetCityById), new { id = addedCity.Id }, addedCity);
     }
 

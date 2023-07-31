@@ -1,8 +1,16 @@
 using CityService.Domain;
+using AutoMapper;
+using CityService.Dto;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var configuration = new MapperConfiguration(cfg =>
+{
+    cfg.CreateMap<City, CityDTO>();
+});
+var mapper = configuration.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

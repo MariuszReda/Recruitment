@@ -9,4 +9,5 @@ public interface ICityService
     CityDTO GetRandomCity();
     List<CityDTO> GetCitiesByRegion(string region);
     void AddRegion(Region region);
+    CityDTO AddCity1(City city, Region region);
 }
